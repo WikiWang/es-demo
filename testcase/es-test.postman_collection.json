@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "55529ad5-f2a8-4d9a-8be3-11103eb083d1",
+		"name": "es test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addMessage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36c3d8b6-354e-49b8-b4af-5e6509f70e01",
+						"exec": [
+							"tests[\"Status code is 201\"] = responseCode.code === 201;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"title\"] = data.name === \"安贞医院\";",
+							"postman.setEnvironmentVariable(\"uuid\", data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"Elasticsearch搜索引擎\",\n\t\"content\" : \"ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。\"\n}"
+				},
+				"url": {
+					"raw": "http://{{serverAddress}}/es/api/{{version}}/message",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"path": [
+						"es",
+						"api",
+						"{{version}}",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}/es/api/{{version}}/message/{{uuid}}",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"path": [
+						"es",
+						"api",
+						"{{version}}",
+						"message",
+						"{{uuid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}/es/api/{{version}}/message?context=Elasticsearch",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"path": [
+						"es",
+						"api",
+						"{{version}}",
+						"message"
+					],
+					"query": [
+						{
+							"key": "context",
+							"value": "Elasticsearch"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}/es/api/{{version}}/message?context=搜索",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"path": [
+						"es",
+						"api",
+						"{{version}}",
+						"message"
+					],
+					"query": [
+						{
+							"key": "context",
+							"value": "搜索"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete message",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}/es/api/{{version}}/message/{{uuid}}",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"path": [
+						"es",
+						"api",
+						"{{version}}",
+						"message",
+						"{{uuid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete all message",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{serverAddress}}/es/api/{{version}}/message",
+					"protocol": "http",
+					"host": [
+						"{{serverAddress}}"
+					],
+					"path": [
+						"es",
+						"api",
+						"{{version}}",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
