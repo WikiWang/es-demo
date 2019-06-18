@@ -4,9 +4,9 @@ This is the demo of ElasticSearch restful api project build with springboot.
 
 Runtime environment:
 ======================
-Java 1.8    
-elasticsearch 6.2.2
-maven 3.6.0
+Java 1.8	
+elasticsearch 6.2.2		
+maven 3.6.0		
 springboot 2.1.5
 
 Project structure:
